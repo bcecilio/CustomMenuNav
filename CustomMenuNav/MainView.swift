@@ -15,7 +15,7 @@ class MainView: UIView {
         button.backgroundColor = #colorLiteral(red: 0.2196078449, green: 0.007843137719, blue: 0.8549019694, alpha: 1)
         button.frame = CGRect(x: 0, y: 0, width: button.frame.width / 3, height: 100)
         button.layer.cornerRadius = 41.2
-//        button.clipsToBounds = true
+        button.setImage(UIImage(systemName: "plus"), for: .normal)
         return button
     }()
 
@@ -78,9 +78,9 @@ class MainView: UIView {
         mainButton.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             mainButton.heightAnchor.constraint(equalToConstant: 80),
-            mainButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 250),
-            mainButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -80),
-            mainButton.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -30)
+            mainButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 290),
+            mainButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -35),
+            mainButton.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -40)
         ])
     }
     
@@ -88,9 +88,9 @@ class MainView: UIView {
         addSubview(stackView)
         stackView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            stackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 200),
-            stackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -40),
-            stackView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -30)
+            stackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 250),
+            stackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
+            stackView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -40)
         ])
     }
 }
