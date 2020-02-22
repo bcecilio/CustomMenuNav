@@ -12,7 +12,10 @@ class MainView: UIView {
     
     public lazy var mainButton: UIButton = {
         let button = UIButton()
-        button.backgroundColor = .systemBlue
+        button.backgroundColor = #colorLiteral(red: 0.2196078449, green: 0.007843137719, blue: 0.8549019694, alpha: 1)
+        button.frame = CGRect(x: 0, y: 0, width: button.frame.width / 3, height: 100)
+        button.layer.cornerRadius = 41.2
+//        button.clipsToBounds = true
         return button
     }()
 
@@ -27,6 +30,8 @@ class MainView: UIView {
     
     public lazy var button1: UIButton = {
         let button = UIButton()
+        button.frame = CGRect(x: 0, y: 0, width: 100, height: 100)
+        button.layer.cornerRadius = 0.5 * button.bounds.size.width
 //        button.backgroundColor = .white
         button.setImage(UIImage(named: "icons8-camcorder_pro"), for: .normal)
         return button
@@ -64,16 +69,17 @@ class MainView: UIView {
     }
     
     private func commonInit() {
-        setUpMainButton()
         setUpStackView()
+        setUpMainButton()
     }
     
     private func setUpMainButton() {
         addSubview(mainButton)
         mainButton.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            mainButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 200),
-            mainButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -40),
+            mainButton.heightAnchor.constraint(equalToConstant: 80),
+            mainButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 250),
+            mainButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -80),
             mainButton.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -30)
         ])
     }
