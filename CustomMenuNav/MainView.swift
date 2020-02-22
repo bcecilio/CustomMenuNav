@@ -9,6 +9,12 @@
 import UIKit
 
 class MainView: UIView {
+    
+    public lazy var mainButton: UIButton = {
+        let button = UIButton()
+        button.backgroundColor = .systemBlue
+        return button
+    }()
 
     public lazy var stackView: UIStackView = {
         let SV = UIStackView(arrangedSubviews: [button1, button2, button3, button4])
@@ -58,7 +64,18 @@ class MainView: UIView {
     }
     
     private func commonInit() {
+        setUpMainButton()
         setUpStackView()
+    }
+    
+    private func setUpMainButton() {
+        addSubview(mainButton)
+        mainButton.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            mainButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 200),
+            mainButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -40),
+            mainButton.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -30)
+        ])
     }
     
     private func setUpStackView() {
