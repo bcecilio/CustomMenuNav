@@ -18,21 +18,25 @@ class MainView: UIView {
     
     public lazy var button1: UIButton = {
         let button = UIButton()
+        button.backgroundColor = .red
         return button
     }()
     
     public lazy var button2: UIButton = {
         let button = UIButton()
+        button.backgroundColor = .blue
         return button
     }()
     
     public lazy var button3: UIButton = {
         let button = UIButton()
+        button.backgroundColor = .yellow
         return button
     }()
     
     public lazy var button4: UIButton = {
         let button = UIButton()
+        button.backgroundColor = .orange
         return button
     }()
     
@@ -47,7 +51,7 @@ class MainView: UIView {
     }
     
     private func commonInit() {
-        
+        setUpStackView()
     }
     
     private func setUpStackView() {
