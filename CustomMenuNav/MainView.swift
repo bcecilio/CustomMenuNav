@@ -21,29 +21,29 @@ class MainView: UIView {
     
     public lazy var button1: UIButton = {
         let button = UIButton()
-        button.backgroundColor = .red
-        button.layer.cornerRadius = 0.5 * button.bounds.size.width
+//        button.backgroundColor = .white
+        button.setImage(UIImage(named: "icons8-camcorder_pro"), for: .normal)
         return button
     }()
     
     public lazy var button2: UIButton = {
         let button = UIButton()
-        button.backgroundColor = .blue
-        button.layer.cornerRadius = 0.5 * button.bounds.size.width
+//        button.backgroundColor = .white
+        button.setImage(UIImage(named: "icons8-cup"), for: .normal)
         return button
     }()
     
     public lazy var button3: UIButton = {
         let button = UIButton()
-        button.backgroundColor = .yellow
-        button.layer.cornerRadius = 0.5 * button.bounds.size.width
+//        button.backgroundColor = .white
+        button.setImage(UIImage(named: "icons8-search"), for: .normal)
         return button
     }()
     
     public lazy var button4: UIButton = {
         let button = UIButton()
-        button.backgroundColor = .orange
-        button.layer.cornerRadius = 0.5 * button.bounds.size.width
+//        button.backgroundColor = .white
+        button.setImage(UIImage(named: "icons8-umbrella"), for: .normal)
         return button
     }()
     
@@ -66,8 +66,8 @@ class MainView: UIView {
         stackView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             stackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 200),
-            stackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -30),
-            stackView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: 30)
+            stackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -40),
+            stackView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -30)
         ])
     }
 }
