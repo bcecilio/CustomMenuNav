@@ -16,17 +16,18 @@ class MainView: UIView {
         button.frame = CGRect(x: 0, y: 0, width: button.frame.width / 3, height: 100)
         button.layer.cornerRadius = 41.2
         button.setImage(UIImage(systemName: "plus"), for: .normal)
+        button.addTarget(self, action: #selector(animateButtons), for: .touchUpInside)
         return button
     }()
-
-//    public lazy var stackView: UIStackView = {
-//        let SV = UIStackView(arrangedSubviews: [button1, button2, button3, button4])
-//        SV.axis = .vertical
-//        SV.distribution = .equalSpacing
-//        SV.backgroundColor = .lightGray
-//        SV.spacing = 0
-//        return SV
-//    }()
+    
+    //    public lazy var stackView: UIStackView = {
+    //        let SV = UIStackView(arrangedSubviews: [button1, button2, button3, button4])
+    //        SV.axis = .vertical
+    //        SV.distribution = .equalSpacing
+    //        SV.backgroundColor = .lightGray
+    //        SV.spacing = 0
+    //        return SV
+    //    }()
     
     public lazy var button1: UIButton = {
         let button = UIButton()
@@ -48,14 +49,14 @@ class MainView: UIView {
     
     public lazy var button3: UIButton = {
         let button = UIButton()
-//        button.backgroundColor = .white
+        //        button.backgroundColor = .white
         button.setImage(UIImage(named: "icons8-search"), for: .normal)
         return button
     }()
     
     public lazy var button4: UIButton = {
         let button = UIButton()
-//        button.backgroundColor = .white
+        //        button.backgroundColor = .white
         button.setImage(UIImage(named: "icons8-umbrella"), for: .normal)
         return button
     }()
@@ -105,5 +106,19 @@ class MainView: UIView {
             button2.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -40),
             button2.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -40)
         ])
+    }
+    
+    @objc private func animateButtons() {
+        if mainButton.alpha == 1 {
+            UIView.animate(withDuration: 0.2, delay: 0.0, options: [.curveLinear], animations: {
+                self.button1.transform = CGAffineTransform(translationX: 0, y: -100)
+                self.button2.transform = CGAffineTransform(translationX: 0, y: -200)
+            }, completion: nil)
+        } else {
+            UIView.animate(withDuration: 0.2, delay: 0.0, options: [.curveLinear], animations: {
+                self.button1.transform = CGAffineTransform(translationX: 0, y: 100)
+                self.button2.transform = CGAffineTransform(translationX: 0, y: 200)
+            }, completion: nil)
+        }
     }
 }
