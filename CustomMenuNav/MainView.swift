@@ -10,6 +10,12 @@ import UIKit
 
 class MainView: UIView {
     
+    public var backgroundImage: UIImageView = {
+        let image = UIImageView()
+        image.image = UIImage(named: "iphoneWallpaper")
+        return image
+    }()
+    
     public lazy var mainButton: UIButton = {
         let button = UIButton()
         button.backgroundColor = #colorLiteral(red: 0.2196078449, green: 0.007843137719, blue: 0.8549019694, alpha: 1)
@@ -23,15 +29,6 @@ class MainView: UIView {
         button.addTarget(self, action: #selector(animateButtons), for: .touchUpInside)
         return button
     }()
-    
-    //    public lazy var stackView: UIStackView = {
-    //        let SV = UIStackView(arrangedSubviews: [button1, button2, button3, button4])
-    //        SV.axis = .vertical
-    //        SV.distribution = .equalSpacing
-    //        SV.backgroundColor = .lightGray
-    //        SV.spacing = 0
-    //        return SV
-    //    }()
     
     public lazy var button1: UIButton = {
         let button = UIButton()
@@ -67,6 +64,8 @@ class MainView: UIView {
         return button
     }()
     
+    let visualEffectView = UIVisualEffectView(effect: nil)
+    
     override init(frame: CGRect) {
         super.init(frame: UIScreen.main.bounds)
         commonInit()
@@ -78,9 +77,27 @@ class MainView: UIView {
     }
     
     private func commonInit() {
+        setupBackground()
+        blurEffect()
         setupButton2()
         setupButton()
         setUpMainButton()
+    }
+    
+    private func setupBackground() {
+        addSubview(backgroundImage)
+        backgroundImage.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            backgroundImage.topAnchor.constraint(equalTo: topAnchor),
+            backgroundImage.bottomAnchor.constraint(equalTo: bottomAnchor),
+            backgroundImage.leadingAnchor.constraint(equalTo: leadingAnchor),
+            backgroundImage.trailingAnchor.constraint(equalTo: trailingAnchor)
+        ])
+    }
+    
+    fileprivate func blurEffect() {
+        addSubview(visualEffectView)
+        visualEffectView.frame = frame
     }
     
     private func setUpMainButton() {
@@ -121,11 +138,13 @@ class MainView: UIView {
             UIView.animate(withDuration: 0.2, delay: 0.0, options: [.curveLinear], animations: {
                 self.button1.transform = CGAffineTransform(translationX: 0, y: -100)
                 self.button2.transform = CGAffineTransform(translationX: 0, y: -200)
+                self.visualEffectView.effect = UIBlurEffect(style: .regular)
             }, completion: nil)
         } else {
             UIView.animate(withDuration: 0.2, delay: 0.0, options: [.curveLinear], animations: {
                 self.button1.transform = .identity
                 self.button2.transform = .identity
+                self.visualEffectView.effect = nil
             }, completion: nil)
             button1.alpha = 0
             button2.alpha = 0
