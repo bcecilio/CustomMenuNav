@@ -15,6 +15,10 @@ class MainView: UIView {
         button.backgroundColor = #colorLiteral(red: 0.2196078449, green: 0.007843137719, blue: 0.8549019694, alpha: 1)
         button.frame = CGRect(x: 0, y: 0, width: button.frame.width / 3, height: 100)
         button.layer.cornerRadius = 41.2
+        button.layer.shadowColor = UIColor.black.cgColor
+        button.layer.shadowOpacity = 1
+        button.layer.shadowOffset = .zero
+        button.layer.shadowRadius = 5
         button.setImage(UIImage(systemName: "plus"), for: .normal)
         button.addTarget(self, action: #selector(animateButtons), for: .touchUpInside)
         return button
