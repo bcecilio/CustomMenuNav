@@ -35,6 +35,7 @@ class MainView: UIView {
         button.layer.cornerRadius = 41.2
         button.setImage(UIImage(named: "icons8-camcorder_pro"), for: .normal)
         button.backgroundColor = .white
+        button.alpha = 0
         return button
     }()
     
@@ -44,6 +45,7 @@ class MainView: UIView {
         button.layer.cornerRadius = 41.2
         button.backgroundColor = .white
         button.setImage(UIImage(named: "icons8-cup"), for: .normal)
+        button.alpha = 0
         return button
     }()
     
@@ -109,16 +111,20 @@ class MainView: UIView {
     }
     
     @objc private func animateButtons() {
-        if mainButton.alpha == 1 {
+        if button1.alpha == 0 && button2.alpha == 0 {
+            button1.alpha = 1
+            button2.alpha = 1
             UIView.animate(withDuration: 0.2, delay: 0.0, options: [.curveLinear], animations: {
                 self.button1.transform = CGAffineTransform(translationX: 0, y: -100)
                 self.button2.transform = CGAffineTransform(translationX: 0, y: -200)
             }, completion: nil)
         } else {
             UIView.animate(withDuration: 0.2, delay: 0.0, options: [.curveLinear], animations: {
-                self.button1.transform = CGAffineTransform(translationX: 0, y: 100)
-                self.button2.transform = CGAffineTransform(translationX: 0, y: 200)
+                self.button1.transform = .identity
+                self.button2.transform = .identity
             }, completion: nil)
+            button1.alpha = 0
+            button2.alpha = 0
         }
     }
 }
